@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="layui/css/layui.css">
+	<link rel="stylesheet" type="text/css" href="pagination.css">
+	<style type="text/css">
+		*{
+			margin:0;padding:0;
+		}
+		html,body{
+			background: #090715;
+			width: 100%;
+			height: 100%;
+		}
+		.wrapContainer{
+			width:90%;
+			margin:0 auto;
+			margin-top:50px;
+			margin-bottom: 20px;
+		}
+		.wrapHeaderSelect{
+			height: 36px;
+			font-size: 14px;
+			display: inline-block;
+		}
+		.wrapHeaderSelectLable{
+			width: 80px;
+			height: 36px;
+			line-height: 36px;
+			color: #90939e;
+			text-align: center;
+			background:#262936;
+
+		}
+		.wrapContentTab{
+			border:1px solid #211f2c;
+			margin-top: 10px;
+		}
+		.line{
+			display: inline-block;
+			background: #42485b;
+			width:3px;
+			height: 18px;
+			float: left;
+		}
+		.lineContent{
+			font-size: 14px;
+			color: #a4a4a9;
+			display: inline-block;
+			float: left;
+			color: #cccccf
+		}
+		.titleContent{
+			font-size: 14px;
+			color: #a4a4a9;
+			display: inline-block;
+			float: left;
+			color: #cccccf;
+			margin-left:8px;
+		}
+		.chartContent{
+			margin-left:15px;
+			margin-right:15px;
+			position: relative;
+			margin-bottom: 15px;
+		}
+		.chartBox{
+			width:40%;
+			float: left;
+			border:1px solid #211f2c;
+			padding-top: 20px;
+			margin-top:15px;
+		}
+
+		.btnBox{
+			width: 16%;
+			float: left;
+		}
+		.btnBox-content{
+			width: 80px;
+			height: 30px;
+			line-height: 30px;
+			text-align: center;
+			font-size: 14px;
+			color: #fff;
+		}
+		#pie{
+			height: 280px;
+			width: 100%;
+		}
+		#pie2{
+			height: 280px;
+			width: 100%;
+		}
+		.zdy label{
+			color: #90939e;
+			text-align: center;
+			background:#262936;
+		}
+		.zdy .layui-form-select .layui-input{
+			background:#303446!important;
+			border-radius: 0;
+			border:none;
+			color: #9ea0a9;
+			font-size: 12px!important
+		}
+		.layui-form-select dl dd.layui-this {
+			background-color: #3386dd!important;
+			color: #fff;
+		}
+		.layui-tab{
+			margin:0!important;
+		}
+		.layui-tab-card>.layui-tab-title{
+			background:#42485b;
+			color: #80919c;
+			border:none!important;
+		}
+		.layui-tab-card>.layui-tab-title .layui-this {
+			background-color: #343744;
+			color: #84868e!important;
+		}
+		.layui-tab-card{
+			border:none!important;
+		}
+		.layui-tab-title .layui-this:after{
+			border:none!important;
+		}
+		.chartBox.zdy .layui-form-select{
+			width: 48%;
+			float: left;
+		}
+		.chartBox.zdy .layui-form-select:nth-of-type(1){
+			margin-right:2%;
+		}
+		.chartBoxs.zdy .layui-form-select{
+			width: 48%;
+			float: left;
+		}
+		.chartBoxs.zdy .layui-form-select:nth-of-type(1){
+			margin-right:2%;
+		}
+		.layui-tab-item, .layui-util-face .layui-layer-TipsG{
+			padding-top: 10px
+		}
+		.btnBox{
+			margin-top: 119px;
+
+		}
+		.btnBox-content{
+			margin:0 auto;
+			margin-bottom: 20px;
+			border:1px solid #555561;
+		}
+		.btnBox-content.active{
+			background:#262838;
+
+		}
+		.zdyLabel{
+			color: #767780;
+			font-size: 14px;
+			background: #262936;
+			width: 28px;
+		}
+		.laydate .layui-input{
+			border: 1px solid #303446!important;
+		    background-color: #303446!important;
+		    border-radius: 0px!important;
+		    color: #babbc1!important;
+		}
+		.green{
+			color: #328e5c;
+		}
+		.red{
+			color: #a54046;
+		}
+		.layui-table thead tr{
+			background: #42485b!important;
+			color: #a4a7b0;
+			border:none!important;
+		}
+		.layui-table td, .layui-table th{
+			border:none!important;
+			text-align: center;
+		}
+		.layui-table tr:nth-child(odd){background:#1A1A29;border:none!important;}
+		.layui-table tr:nth-child(even){background:#252738;border:none!important;}
+		.message-con{
+			width: 20%;
+			float: left;
+			height: 300px;
+			background: #1a1a29;
+		}
+		.message-con-header{
+			height: 35px;
+			line-height: 35px;
+			color: #ffffff;
+			font-size: 24px;
+		}
+		.message-con-header span:nth-of-type(1){
+			float: left;
+		}
+		.message-con-header span:nth-of-type(2){
+			float: right;
+		}
+		.left-con{
+			float: left;
+			width: 40%;
+			height: 300px;
+		}
+		.right-con{
+			float: right;
+			width: 60%;
+			height: 300px;
+		}
+		#line2{
+			width: 100%;
+			height: 300px;
+		}
+		.layui-tab-item{
+			position: relative;
+		}
+		.zh_left{
+			width:30%;
+			height: 300px;
+			float: left;
+		}
+		.zh_center{
+			width:30%;
+			height: 300px;
+			float: left;
+		}
+		.zh_right{
+			width:30%;
+			height: 300px;
+			float: left;
+		}
+		.imgPf img{
+			float: left;
+		}
+		.zh_right div{
+			width: 50px;
+			float: left;
+			background: blue;
+			margin-right: 20px;
+
+		}
+		.cicle{
+			width: 100%;
+			height: 300px;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapContainer">
+		<div class="wrapHeaderSelect">
+			<div class="wrapHeaderSelectContent zdy">
+				<div class="layui-form-item">
+					<label class="layui-form-label">金税服务商</label>
+					<div class="layui-input-block">
+						<form class="layui-form" action="">
+							<select name="city" lay-verify="required">
+								<option value=""></option>
+								<option value="0">金税服务商2</option>
+								<option value="1">金税服务商3</option>
+								<option value="2">金税服务商4</option>
+								<option value="3">金税服务商5</option>
+								<option value="4">金税服务商6</option>
+							</select>
+						</form> 
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="wrapContentTab">
+			<div class="layui-tab layui-tab-card">
+				<ul class="layui-tab-title">
+					<li class="layui-this">服务质量</li>
+					<li>综合评定</li>
+					<li>考勤管理</li>
+					<li>绩效考核</li>
+				</ul> 
+				<div class="layui-tab-content" >
+					<div class="layui-tab-item layui-show">
+						<div class="titleLine">
+							<div class="line"></div>
+							<div class="titleContent">服务质量统计</div>
+						</div>
+						<div style="clear: both;"></div>
+						<div class="chartContent">
+							<div class="chartBox zdy">
+								<form class="layui-form" action="" style="width:70%;margin:0 auto;">
+									<select name="city" lay-verify="required">
+										<option value="过去6个月">过去6个月</option>
+										<option value="0">金税服务商2</option>
+										<option value="1">金税服务商3</option>
+										<option value="2">金税服务商4</option>
+										<option value="3">金税服务商5</option>
+										<option value="4">金税服务商6</option>
+									</select>
+									<select name="city" lay-verify="required">
+										<option value="响应时间分布">响应时间分布</option>
+										<option value="0">金税服务商2</option>
+										<option value="1">金税服务商3</option>
+										<option value="2">金税服务商4</option>
+										<option value="3">金税服务商5</option>
+										<option value="4">金税服务商6</option>
+									</select>
+								</form> 
+								<div id="pie" style="margin-top:40px"></div>
+							</div>
+							<div class="btnBox">
+								<div class="btnBox-content active">同步时间</div>
+								<div class="btnBox-content">同步类型</div>
+							</div>
+							<div class="chartBox zdy">
+								<form class="layui-form" action="" style="width:70%;margin:0 auto;">
+									<select name="city" lay-verify="required">
+										<option value="过去6个月">过去6个月</option>
+										<option value="0">金税服务商2</option>
+										<option value="1">金税服务商3</option>
+										<option value="2">金税服务商4</option>
+										<option value="3">金税服务商5</option>
+										<option value="4">金税服务商6</option>
+									</select>
+									<select name="city" lay-verify="required">
+										<option value="响应时间分布">响应时间分布</option>
+										<option value="0">金税服务商2</option>
+										<option value="1">金税服务商3</option>
+										<option value="2">金税服务商4</option>
+										<option value="3">金税服务商5</option>
+										<option value="4">金税服务商6</option>
+									</select>
+								</form> 
+								<div id="pie2" style="margin-top:40px"></div>
+							</div>
+							<div style="clear: both;"></div>
+						</div>
+						<div class="titleLine">
+							<div class="line"></div>
+							<div class="titleContent">出勤记录</div>
+						</div>
+						<div style="clear: both;"></div>
+						<div class="layui-form laydate" style="margin-top:15px">
+							<div class="layui-form-item" style="margin-bottom:4px!important">
+								<div class="layui-inline">
+									<label class="layui-form-label zdyLabel">时间</label>
+									<div class="layui-input-inline">
+										<input type="text" class="layui-input" id="test1" placeholder="2018-07-15">
+									</div>
+									<div class="layui-input-inline">
+										<input type="text" class="layui-input" id="test2" placeholder="2018-07-17">
+									</div>
+								</div>
+							</div>
+						</div>
+						<table class="layui-table" style="margin-top:5px;">
+							<colgroup>
+							<col width="150">
+							<col width="200">
+							<col>
+							</colgroup>
+							<thead>
+								<tr>
+									<th width="60">日期</th>
+									<th width="40">单号</th>
+									<th width="80">维修人工号</th>
+									<th width="60">故障时间</th>
+									<th width="60">匹配时间</th>
+									<th width="60">响应时间</th>
+									<th width="60">完成时间</th>
+									<th width="60">历时</th>
+									<th width="110">同源故障标记</th>
+									<th width="110">同源故障间隔</th>
+								</tr> 
+							</thead>
+							<tbody>
+								<tr>
+									<td>2018.08.11</td>
+									<td>001</td>
+									<td>20818</td>
+									<td>8.18</td>
+									<td>9.18</td>
+									<td class="green">6m</td>
+									<td>12:20</td>
+									<td class="green">4h2m</td>
+									<td>0002</td>
+									<td class="red">小于2</td>
+								</tr>
+								<tr>
+									<td>2018.08.11</td>
+									<td>001</td>
+									<td>20818</td>
+									<td>8.18</td>
+									<td>9.18</td>
+									<td class="green">6m</td>
+									<td>12:20</td>
+									<td class="green">4h2m</td>
+									<td>0002</td>
+									<td class="red">小于2</td>
+								</tr>
+								<tr>
+									<td>2018.08.11</td>
+									<td>001</td>
+									<td>20818</td>
+									<td>8.18</td>
+									<td>9.18</td>
+									<td class="green">6m</td>
+									<td>12:20</td>
+									<td class="green">4h2m</td>
+									<td>0002</td>
+									<td class="red">小于2</td>
+								</tr>
+								<tr>
+									<td>2018.08.11</td>
+									<td>001</td>
+									<td>20818</td>
+									<td>8.18</td>
+									<td>9.18</td>
+									<td class="green">6m</td>
+									<td>12:20</td>
+									<td class="green">4h2m</td>
+									<td>0002</td>
+									<td class="red">小于2</td>
+								</tr>
+								<tr>
+									<td>2018.08.11</td>
+									<td>001</td>
+									<td>20818</td>
+									<td>8.18</td>
+									<td>9.18</td>
+									<td class="green">6m</td>
+									<td>12:20</td>
+									<td class="green">4h2m</td>
+									<td>0002</td>
+									<td class="red">小于2</td>
+								</tr>
+							</tbody>
+						</table> 
+						<div class="data-container"></div>
+						<div id="pagination-demo1"></div>
+				</div>
+				<div class="layui-tab-item">
+					<div class="zh_left">
+						<img src="oval.png">
+						<span>潘大帅</span>
+						<span>工号000000001111</span>
+						<div style="color: #ffd359;text-align: center;font-size: 36px">
+							4.6
+						</div>
+						<div class="imgPf">
+							<img src="start.png">
+							<img src="start.png">
+							<img src="start.png">
+							<img src="start.png">
+							<img src="start2.png">
+						</div>
+					</div>
+					<div class="zh_center">
+						<div class="cicle">12</div>
+					</div>
+					<div class="zh_right">
+						<div>原因1</div><div>原因1</div><div>原因1</div><div>原因1</div>
+						<div>原因1</div><div>原因1</div><div>原因1</div><div>原因1</div>
+						<div>原因1</div><div>原因1</div><div>原因1</div><div>原因1</div>
+						<div>原因1</div><div>原因1</div><div>原因1</div><div>原因1</div>
+					</div>
+				</div>
+				<div class="layui-tab-item">
+				  <table class="layui-table" style="margin-top:5px;">
+						<colgroup>
+						<col width="150">
+						<col width="200">
+						<col>
+						</colgroup>
+						<thead>
+							<tr>
+								<th width="60">服务商</th>
+								<th width="40">考勤地点</th>
+								<th width="80">考勤时间</th>
+								<th width="60">操作</th>
+							</tr> 
+						</thead>
+						<tbody>
+							<tr>
+								<td>001</td>
+								<td>东莞庄一横路,花城学院b栋三楼</td>
+								<td>8:30-17:00</td>
+								<td><button class="layui-btn layui-btn-normal layui-btn-sm">编辑</button></td>
+							</tr>
+						</tbody>
+					</table> 
+					<div class="titleLine">
+							<div class="line"></div>
+							<div class="titleContent">出勤记录</div>
+					</div>
+					<div style="clear: both;"></div>
+					<div class="layui-form laydate" style="margin-top:15px">
+						<div class="layui-form-item" style="margin-bottom:4px!important">
+							<div class="layui-inline">
+								<label class="layui-form-label zdyLabel">时间</label>
+								<div class="layui-input-inline">
+									<input type="text" class="layui-input" id="test1" placeholder="2018-07-15">
+								</div>
+								<div class="layui-input-inline">
+									<input type="text" class="layui-input" id="test2" placeholder="2018-07-17">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="message-con">
+						<div class="message-con-header" style="background: #f1bc69">
+							<span>迟到</span>
+							<span>0</span>
+						</div>
+					</div>
+					<div class="message-con">
+						<div class="message-con-header" style="background: #ee5555">
+							<span>迟到</span>
+							<span>0</span>
+						</div>
+					</div>
+					<div class="message-con">
+						<div class="message-con-header" style="background: #3386dd">
+							<span>迟到</span>
+							<span>0</span>
+						</div>
+					</div>
+					<div class="message-con">
+						<div class="message-con-header" style="background: #3386dd">
+							<span>迟到</span>
+							<span>0</span>
+						</div>
+					</div>
+					<div class="message-con">
+						<div class="message-con-header" style="background: #36a165">
+							<span>迟到</span>
+							<span>0</span>
+						</div>
+					</div>
+					<div style="clear: both;"></div>
+					<div class="left-con">
+						<div class="chartBoxs zdy">
+							<div class="titleLine" style="height: 20px">
+								<div class="line"></div>
+								<div class="titleContent">单项趋势统计</div>
+							</div>
+							<form class="layui-form" action="" style="width:70%;margin:0 auto;">
+								<select name="city" lay-verify="required">
+									<option value="过去6个月">过去6个月</option>
+									<option value="0">金税服务商2</option>
+									<option value="1">金税服务商3</option>
+									<option value="2">金税服务商4</option>
+									<option value="3">金税服务商5</option>
+									<option value="4">金税服务商6</option>
+								</select>
+								<select name="city" lay-verify="required">
+									<option value="响应时间分布">响应时间分布</option>
+									<option value="0">金税服务商2</option>
+									<option value="1">金税服务商3</option>
+									<option value="2">金税服务商4</option>
+									<option value="3">金税服务商5</option>
+									<option value="4">金税服务商6</option>
+								</select>
+							</form> 
+							<div id="line2" style="margin-top:40px"></div>
+						</div>
+					</div>
+					<div class="right-con">
+						<div class="titleLine">
+							<div class="line"></div>
+							<div class="titleContent">出勤记录</div>
+						</div>
+						<div style="clear: both;"></div>
+						<div class="layui-form laydate" style="margin-top:15px">
+							<div class="layui-form-item" style="margin-bottom:4px!important">
+								<div class="layui-inline">
+									<label class="layui-form-label zdyLabel">时间</label>
+									<div class="layui-input-inline">
+										<input type="text" class="layui-input" id="test1" placeholder="2018-07-15">
+									</div>
+									<div class="layui-input-inline">
+										<input type="text" class="layui-input" id="test2" placeholder="2018-07-17">
+									</div>
+								</div>
+							</div>
+						</div>
+						<table class="layui-table" style="margin-top:5px;">
+							<colgroup>
+							<col width="150">
+							<col width="200">
+							<col>
+							</colgroup>
+							<thead>
+								<tr>
+									<th width="60">日期</th>
+									<th width="40">单号</th>
+									<th width="80">维修人工号</th>
+									<th width="60">故障时间</th>
+									<th width="60">匹配时间</th>
+									<th width="60">响应时间</th>
+									<th width="60">完成时间</th>
+									<th width="60">历时</th>
+									<th width="110">同源故障标记</th>
+									<th width="110">同源故障间隔</th>
+								</tr> 
+							</thead>
+							<tbody>
+								<tr>
+									<td>2018.08.11</td>
+									<td>001</td>
+									<td>20818</td>
+									<td>8.18</td>
+									<td>9.18</td>
+									<td class="green">6m</td>
+									<td>12:20</td>
+									<td class="green">4h2m</td>
+									<td>0002</td>
+									<td class="red">小于2</td>
+								</tr>
+								<tr>
+									<td>2018.08.11</td>
+									<td>001</td>
+									<td>20818</td>
+									<td>8.18</td>
+									<td>9.18</td>
+									<td class="green">6m</td>
+									<td>12:20</td>
+									<td class="green">4h2m</td>
+									<td>0002</td>
+									<td class="red">小于2</td>
+								</tr>
+								<tr>
+									<td>2018.08.11</td>
+									<td>001</td>
+									<td>20818</td>
+									<td>8.18</td>
+									<td>9.18</td>
+									<td class="green">6m</td>
+									<td>12:20</td>
+									<td class="green">4h2m</td>
+									<td>0002</td>
+									<td class="red">小于2</td>
+								</tr>
+								<tr>
+									<td>2018.08.11</td>
+									<td>001</td>
+									<td>20818</td>
+									<td>8.18</td>
+									<td>9.18</td>
+									<td class="green">6m</td>
+									<td>12:20</td>
+									<td class="green">4h2m</td>
+									<td>0002</td>
+									<td class="red">小于2</td>
+								</tr>
+								<tr>
+									<td>2018.08.11</td>
+									<td>001</td>
+									<td>20818</td>
+									<td>8.18</td>
+									<td>9.18</td>
+									<td class="green">6m</td>
+									<td>12:20</td>
+									<td class="green">4h2m</td>
+									<td>0002</td>
+									<td class="red">小于2</td>
+								</tr>
+							</tbody>
+						</table> 
+					</div>
+					
+				</div>
+				<div class="layui-tab-item">
+					<div class="left-con">
+						<div class="chartBoxs zdy">
+							<div class="titleLine" style="height: 20px">
+								<div class="line"></div>
+								<div class="titleContent">单项趋势统计</div>
+							</div>
+							<form class="layui-form" action="" style="width:70%;margin:0 auto;">
+								<select name="city" lay-verify="required">
+									<option value="过去6个月">过去6个月</option>
+									<option value="0">金税服务商2</option>
+									<option value="1">金税服务商3</option>
+									<option value="2">金税服务商4</option>
+									<option value="3">金税服务商5</option>
+									<option value="4">金税服务商6</option>
+								</select>
+								<select name="city" lay-verify="required">
+									<option value="响应时间分布">响应时间分布</option>
+									<option value="0">金税服务商2</option>
+									<option value="1">金税服务商3</option>
+									<option value="2">金税服务商4</option>
+									<option value="3">金税服务商5</option>
+									<option value="4">金税服务商6</option>
+								</select>
+							</form> 
+							<div id="line2" style="margin-top:40px"></div>
+						</div>
+					</div>
+					<div class="right-con">
+						<div style="float: left;"><img src=""><img src=""><span>潘大帅</span>---7.8分</div>
+						<div style="float: left;"><img src=""><img src=""><span>潘大帅</span>---7.8分</div>
+						<div style="float: left;"><img src=""><img src=""><span>潘大帅</span>---7.8分</div>
+						<div style="float: left;"><img src=""><img src=""><span>潘大帅</span>---7.8分</div>
+						<div style="float: left;"><img src=""><img src=""><span>潘大帅</span>---7.8分</div>
+					</div>
+				</div>
+				<div class="layui-tab-item">5</div>
+				<div class="layui-tab-item">6</div>
+			</div>
+		</div>
+	</div>
+</div> 
+</body>
+<script type="text/javascript" src="layui/layui.js"></script>
+<script type="text/javascript" src="jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="pagination.js"></script>
+<script type="text/javascript" src="echarts.min.js"></script>
+<script type="text/javascript" src="page.js"></script>
+<script type="text/javascript">
+	//服务质量
+	layui.use('form', function(){
+		var form = layui.form;
+	});
+	//选项卡
+	layui.use('element', function(){
+		var element = layui.element; 
+	});
+	// 指定图表的配置项和数据
+	var option = {
+	    title: {
+	        text: '世界人口总量',
+	        subtext: '数据来自网络'
+	    },
+	    tooltip: {
+	        trigger: 'axis',
+	        axisPointer: {
+	            type: 'shadow'
+	        }
+	    },
+	    legend: {
+	        data: ['2011年', '2012年']
+	    },
+	    grid: {
+	        left: '3%',
+	        right: '4%',
+	        bottom: '3%',
+	        containLabel: true
+	    },
+	    xAxis: {
+	        type: 'value',
+	        boundaryGap: [0, 0.01]
+	    },
+	    yAxis: {
+	        type: 'category',
+	        data: ['巴西','印尼','美国','印度','中国','世界人口(万)','中国1','中国2','中国3','中国4','中国5','中国6','中国7']
+	    },
+	    series: [
+	        {
+	            name: '2011年',
+	            type: 'bar',
+	            data: [18203, 23489, 29034, 104970, 131744, 630230, 630230, 630230, 630230, 630230, 630230, 630230, 630230]
+	        }
+	    ]
+	};
+
+	var option2={
+	    tooltip: {
+	        trigger: 'axis'
+	    },
+	    legend: {
+	        itemWidth:10,
+	        itemHeight:10,
+	        x: 'left',
+	        data:['服务商1','服务商2','服务商3','服务商4'],
+	        textStyle:{color:'rgba(255, 255, 255, 0.6)'},
+	        top:13,
+	        left:13
+	    },
+	    grid: {
+	        left: '3%',
+	        right: '6%',
+	        bottom: '3%',
+	        top:'23%',
+	        containLabel: true
+	    },
+	    toolbox: {
+	        feature: {
+	        }
+	    },
+	    xAxis: {
+	        type: 'category',
+	        boundaryGap: false,
+	        data: ['一月','二月','三月','四月','五月','六月','七月'],
+	        axisLabel:{
+	            textStyle:{
+	             color:"rgba(255, 255, 255, 0.4)"
+	            }
+	        },
+	        axisLine:{
+	            lineStyle:{
+	                color:'rgba(255, 255, 255, 0.4)',
+	            }
+	        },
+	        splitLine:{  
+	            show:true,
+	            lineStyle:{
+	                color:'rgba(255, 255, 255, 0.4)',
+	                width: 0
+	            }
+	        }
+	    },
+	    yAxis: {
+	        type: 'value',
+	        axisLabel:{
+	            textStyle:{
+	                color:"rgba(255, 255, 255, 0.4)"
+	            },
+	        },
+	        axisLine:{
+	            lineStyle:{
+	                 color:'rgba(255, 255, 255, 0.4)',
+	                width:1
+	            }
+	        },
+	        splitLine:{  
+	            show:true,
+	            lineStyle:{
+	                color:'rgba(255, 255, 255, 0.4)',
+	                width: 1
+	            }
+	        }
+	    },
+	    series: [
+	        {
+	            name:'服务商1',
+	            type:'line',
+	            stack: '工单总量',
+	            data:[120, 132, 101, 134, 90, 230, 210],
+	            itemStyle:{
+	                color:'#417bca'
+	            }
+	        },
+	        {
+	            name:'服务商2',
+	            type:'line',
+	            stack: '工单总量',
+	            data:[220, 182, 191, 234, 290, 330, 310],
+	            itemStyle:{
+	                color:'#34a064'
+	            }
+	        },
+	        {
+	            name:'服务商3',
+	            type:'line',
+	            stack: '工单总量',
+	            data:[320, 42, 191, 134, 220, 330, 310],
+	            itemStyle:{
+	                color:'#f1bc69'
+	            }
+	        },
+	        {
+	            name:'服务商4',
+	            type:'line',
+	            stack: '工单总量',
+	            data:[120, 282, 391, 234, 290, 130, 310],
+	            itemStyle:{
+	                color:'#ee5655'
+	            }
+	        }
+	    ]
+	};
+	// 基于准备好的dom，初始化echarts实例
+	var myChart1 = echarts.init(document.getElementById('pie'));
+	var myChart2 = echarts.init(document.getElementById('pie2'));
+	var myChart3 = echarts.init(document.getElementById('line2'));
+	// 使用刚指定的配置项和数据显示图表。
+	myChart1.setOption(option);
+	myChart2.setOption(option);
+	myChart3.setOption(option2);
+	window.addEventListener("resize",function(){
+		myChart1.resize();
+		myChart2.resize();
+		myChart3.resize();
+	});
+	layui.use('laydate', function(){
+		var laydate = layui.laydate;
+
+	  //常规用法
+	  laydate.render({
+	  	elem: '#test1'
+	  });
+
+	  //常规用法
+	  laydate.render({
+	  	elem: '#test2'
+	  });
+	  
+	});
+	  
+</script>
+</html>
